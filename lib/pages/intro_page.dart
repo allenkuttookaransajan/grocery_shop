@@ -59,6 +59,8 @@ class IntroPage extends StatelessWidget {
                 "Get Started",
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
