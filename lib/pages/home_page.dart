@@ -69,10 +69,15 @@ class HomePage extends StatelessWidget {
                       ),
                       itemBuilder: (context, index) {
                         return GroceryItemTile(
-                            itemName: value.shopItems[index][0],
-                            itemPrice: value.shopItems[index][1],
-                            imagePath: value.shopItems[index][2],
-                            color: value.shopItems[index][3]);
+                          itemName: value.shopItems[index][0],
+                          itemPrice: value.shopItems[index][1],
+                          imagePath: value.shopItems[index][2],
+                          color: value.shopItems[index][3],
+                          onPressed: () {
+                            Provider.of<CartModel>(context, listen: false)
+                                .addItemToCart(index);
+                          },
+                        );
                       });
                 },
               ),
