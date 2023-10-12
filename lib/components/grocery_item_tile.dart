@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class GroceryItemTile extends StatelessWidget {
   final String itemName;
   final String itemPrice;
