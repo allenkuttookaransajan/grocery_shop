@@ -1,3 +1,3 @@
-# grocery_shop
+# Grocery shop
 
-A new Flutter project.
+A Flutter app with the ability to buy groceries with a cart list.
