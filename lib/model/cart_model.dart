@@ -8,7 +8,7 @@ class CartModel extends ChangeNotifier {
     ["Water", "1.00", "lib/images/water.png", Colors.blue],
   ];
 
-  List _cartItems = [];
+  final List _cartItems = [];
 
   get shopItems => _shopItems;
 

@@ -30,37 +30,62 @@ class CartPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: value.cartItems.length,
-                  padding: const EdgeInsets.all(12.0),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(8),
+                child: value.cartItems.length == 0
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'lib/images/empty_cart.png',
+                              height: 150,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.all(30),
+                              child: Text(
+                                "       The Cart is Empty",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        child: ListTile(
-                          leading: Image.asset(
-                            value.cartItems[index][2],
-                            height: 50,
-                          ),
-                          title: Text(value.cartItems[index][0]),
-                          // ignore: prefer_interpolation_to_compose_strings
-                          subtitle: Text('\$' + value.cartItems[index][1]),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.cancel),
-                            onPressed: () =>
-                                Provider.of<CartModel>(context, listen: false)
-                                    .removeItemFromCart(index),
-                          ),
-                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: value.cartItems.length,
+                        padding: const EdgeInsets.all(12.0),
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Container(
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: ListTile(
+                                leading: Image.asset(
+                                  value.cartItems[index][2],
+                                  height: 50,
+                                ),
+                                title: Text(value.cartItems[index][0]),
+                                // ignore: prefer_interpolation_to_compose_strings
+                                subtitle:
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    Text('\$' + value.cartItems[index][1]),
+                                trailing: IconButton(
+                                  icon: const Icon(Icons.cancel),
+                                  onPressed: () => Provider.of<CartModel>(
+                                          context,
+                                          listen: false)
+                                      .removeItemFromCart(index),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(36.0),
